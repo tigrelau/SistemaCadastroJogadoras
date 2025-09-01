@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Paleta de Cores */
+    --roxo: #7d4ab3;
+    --rosa-coral: #c25968;
+    --rosa: #b66e82;
+    --rosa-claro: #f2bcba;
+    --preto: #202221;
+    --creme: #fffdd0;
+
+    /*Gradientes*/
+    --gradiente-body: linear-gradient(135deg, var(--rosa-coral), var(--roxo));
+    --gradiente-intro: linear-gradient(135deg, var(--rosa-claro), var(--rosa));
+    --gradiente-card: linear-gradient(135deg, #ffffff, #faf9f6);
+
+    /*Sombras*/
+    --sombra-card: 0 4px 16px rgba(194, 89, 104, 0.1);
+    --sombra-card-hover: 0 8px 24px rgba(194, 89, 104, 0.15);
+    --sombra-botao: 0 2px 8px rgba(125, 74, 179, 0.2);
+}
