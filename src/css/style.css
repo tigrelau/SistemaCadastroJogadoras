@@ -23,3 +23,19 @@
     --sombra-card-hover: 0 8px 24px rgba(194, 89, 104, 0.15);
     --sombra-botao: 0 2px 8px rgba(125, 74, 179, 0.2);
 }
+
+    
+body {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    color: var(--preto);
+    background-color: var(--creme);
+    font-weight: 500;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
