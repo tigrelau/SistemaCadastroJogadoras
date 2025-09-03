@@ -14,7 +14,7 @@
     --creme: #fffdd0;
 
     /*Gradientes*/
-    --gradiente-body: linear-gradient(135deg, var(--rosa-coral), var(--roxo));
+    --gradiente-body: linear-gradient(165deg, var(--rosa-coral), var(--rosa-claro));
     --gradiente-intro: linear-gradient(135deg, var(--rosa-claro), var(--rosa));
     --gradiente-card: linear-gradient(135deg, #ffffff, #faf9f6);
 
@@ -104,4 +104,25 @@ text-align: center;
     color: rgba(255,255,255,0.8);
 }
 
+.btn-primary {
+    background: var(--gradiente-body);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-button);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(125, 74, 179, 0.3);
+}
+        
 
