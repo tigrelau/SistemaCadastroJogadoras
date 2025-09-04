@@ -206,6 +206,89 @@
             </div>
     </main>
 
+     <!--Formulário -->
+    <div class="novo-cadastro" id="cadastro">
+        <div class="cadastro-content">
+            <div class="cadastro-header">
+                <h2 class="cadastro-title">Cadastrar Nova Jogadora</h2>
+                <button class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form class="form-content">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Nome Completo</label>
+                        <input type="text" class="form-input" placeholder="Digite o nome completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Posição</label>
+                        <select class="form-input" required>
+                            <option value="">Selecione uma posição</option>
+                            <option value="goleira">Goleira</option>
+                            <option value="zagueira">Zagueira</option>
+                            <option value="lateral-direita">Lateral Direita</option>
+                            <option value="lateral-esquerda">Lateral Esquerda</option>
+                            <option value="volante">Volante</option>
+                            <option value="meio-campo">Meio Campo</option>
+                            <option value="meia-atacante">Meia Atacante</option>
+                            <option value="ponta-direita">Ponta Direita</option>
+                            <option value="ponta-esquerda">Ponta Esquerda</option>
+                            <option value="centroavante">Centroavante</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Clube/Time</label>
+                        <input type="text" class="form-input" placeholder="Digite o nome do clube" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">URL da Foto</label>
+                        <input type="url" class="form-input" placeholder="https://exemplo.com/foto.jpg">
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <h3 class="stats-title">Estatísticas</h3>
+                    <div class="stats-form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Gols</label>
+                            <input type="number" class="form-input" min="0" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Assistências</label>
+                            <input type="number" class="form-input" min="0" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Jogos</label>
+                            <input type="number" class="form-input" min="0" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Cartões Amarelos</label>
+                            <input type="number" class="form-input" min="0" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Cartões Vermelhos</label>
+                            <input type="number" class="form-input" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn-save">Cadastrar Jogadora</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
