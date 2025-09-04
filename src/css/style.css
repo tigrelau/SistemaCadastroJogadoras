@@ -156,7 +156,7 @@ text-align: center;
 
 .card-header {
     display: flex;
-    justify-content: between;
+    justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1rem;
 }
@@ -183,7 +183,6 @@ text-align: center;
 .card-actions {
     display: flex;
     gap: 0.5rem;
-    opacity: 0;
     transition: opacity 0.2s ease;
 }
 
