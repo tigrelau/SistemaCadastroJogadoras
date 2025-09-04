@@ -141,9 +141,13 @@ text-align: center;
     transition: all 0.3s ease;
     position: relative;
     border: 1px solid rgba(194, 89, 104, 0.1);
-    width: 700px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 700px;
+    min-width: 280px;
+    margin: 1rem auto;
+    box-sizing: border-box;
 }
+
 
 .player-card:hover {
     transform: translateY(-2px) scale(1.02);
