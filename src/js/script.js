@@ -51,6 +51,9 @@ let players = [
   },
 ];
 
+let teams = [];
+let favoriteCount = 0;
+
 //#region Initialization and Event Listeners
 const playersGrid = document.getElementById("playersGrid");
 const newPlayerForm = document.querySelector("#newPlayerForm");
@@ -112,13 +115,22 @@ function savePlayers() {
 
 function displayPlayers() {
   playersGrid.innerHTML = "";
+  favoriteCount = 0;
 
   players.forEach((player, index) => {
+    if (player.favorita) favoriteCount++;
+
+    teams.includes(player.clube) ? null : teams.push(player.clube);
+
     const playerCard = document.createElement("div");
     playerCard.className = "player-card";
     playerCard.innerHTML = createPlayerCard(player, index);
     playersGrid.appendChild(playerCard);
   });
+
+  document.querySelector("#totalPlayers").innerText = players.length;
+  document.querySelector("#totalTeams").innerText = teams.length;
+  document.querySelector("#favoriteCount").innerText = favoriteCount;
 }
 
 function createPlayerCard(player, index) {
