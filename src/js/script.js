@@ -61,15 +61,23 @@ window.onload = function () {
 
   document
     .querySelector("#openFormBtn")
-    .addEventListener("click", toggleNewPlayerForm);
+    .addEventListener("click", handleAddNewPlayerClick);
 
   document
     .querySelector("#closeFormBtn")
     .addEventListener("click", toggleNewPlayerForm);
 
-  newPlayerForm.addEventListener("submit", addNewPlayer);
+  newPlayerForm.addEventListener("submit", SavePlayer);
   playersGrid.addEventListener("click", handlePlayerGridClick);
 };
+
+function handleAddNewPlayerClick() {
+  document.getElementById("formTitle").innerText = "Cadastrar Nova Jogadora";
+  document.getElementById("savePlayerBtn").innerText = "Cadastrar Jogadora";
+  document.getElementById("savePlayerBtn").dataset.index = "";
+
+  toggleNewPlayerForm();
+}
 
 function handlePlayerGridClick(event) {
   const clickedElement = event.target.closest("button");
@@ -80,6 +88,10 @@ function handlePlayerGridClick(event) {
 
   if (action === "delete") {
     deletePlayer(index);
+  } else if (action === "edit") {
+    handleEditPlayerClick(index);
+  } else if (action === "favorite") {
+    toggleFavorite(index);
   }
 }
 //#endregion
@@ -111,7 +123,9 @@ function displayPlayers() {
 
 function createPlayerCard(player, index) {
   return `<div class="card-header">
-            <button class="favorite-btn ${player.favorita ? "active" : ""}">
+            <button class="favorite-btn ${
+              player.favorita ? "active" : ""
+            }" data-action="favorite" data-index="${index}">
               <i class="fas fa-heart"></i>
             </button>
             <div class="card-actions">
@@ -157,11 +171,31 @@ function toggleNewPlayerForm() {
     ? (newPlayerForm.style.display = "flex")
     : (newPlayerForm.style.display = "none");
 }
+
+function handleEditPlayerClick(index) {
+  let player = players[index];
+
+  document.getElementById("nameInput").value = player.nome;
+  document.getElementById("positionInput").value = player.posicao;
+  document.getElementById("teamInput").value = player.clube;
+  document.getElementById("photoInput").value = player.foto;
+  document.getElementById("goalsInput").value = player.gols;
+  document.getElementById("assistsInput").value = player.assistencias;
+  document.getElementById("matchesInput").value = player.jogos;
+
+  document.getElementById("formTitle").innerText = "Editar Jogadora";
+  document.getElementById("savePlayerBtn").innerText = "Salvar Alterações";
+  document.getElementById("savePlayerBtn").dataset.index = index;
+
+  toggleNewPlayerForm();
+}
 //#endregion
 
 //#region CRUD Operations
-function addNewPlayer(event) {
+function SavePlayer(event) {
   event.preventDefault();
+
+  const index = document.getElementById("savePlayerBtn").dataset.index;
 
   let name = document.getElementById("nameInput").value;
   let position = document.getElementById("positionInput").value;
@@ -171,8 +205,7 @@ function addNewPlayer(event) {
   let assists = document.getElementById("assistsInput").value;
   let matches = document.getElementById("matchesInput").value;
 
-  // Adiciona o novo jogador ao array
-  players.push({
+  let player = {
     nome: name,
     posicao: position,
     clube: team,
@@ -181,22 +214,34 @@ function addNewPlayer(event) {
     assistencias: assists,
     jogos: matches,
     favorita: false,
-  });
+  };
 
-  // Salva as alterações e atualiza a exibição
+  if (index !== "") {
+    players[index] = player;
+  } else {
+    players.push(player);
+  }
+
   savePlayers();
   displayPlayers();
 
-  // Limpa o formulário
   newPlayerForm.reset();
   toggleNewPlayerForm();
 
-  window.alert("Jogadora adicionada com sucesso!");
+  index !== ""
+    ? window.alert("Jogadora editada com sucesso!")
+    : window.alert("Jogadora adicionada com sucesso!");
 }
 
 function deletePlayer(index) {
   players.splice(index, 1);
   savePlayers();
   displayPlayers();
-  window.alert("Jogadora deletada com sucesso!");
+  window.alert("Jogadora removida com sucesso!");
+}
+
+function toggleFavorite(index) {
+  players[index].favorita = !players[index].favorita;
+  savePlayers();
+  displayPlayers();
 }

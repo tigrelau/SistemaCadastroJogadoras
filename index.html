@@ -102,8 +102,8 @@
     <form class="novo-cadastro" id="newPlayerForm" style="display: none">
       <div class="cadastro-content">
         <div class="cadastro-header">
-          <h2 class="cadastro-title">Cadastrar Nova Jogadora</h2>
-          <button class="close-btn" id="closeFormBtn">
+          <h2 class="cadastro-title" id="formTitle">Cadastrar Nova Jogadora</h2>
+          <button class="close-btn" id="closeFormBtn" type="reset">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -199,7 +199,9 @@
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn-save">Cadastrar Jogadora</button>
+            <button type="submit" class="btn-save" id="savePlayerBtn">
+              Salvar Jogadora
+            </button>
           </div>
         </div>
       </div>
