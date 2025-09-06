@@ -51,6 +51,7 @@ let players = [
   },
 ];
 
+//#region Initialization and Event Listeners
 const playersGrid = document.getElementById("playersGrid");
 const newPlayerForm = document.querySelector("#newPlayerForm");
 
@@ -65,8 +66,12 @@ window.onload = function () {
   document
     .querySelector("#closeFormBtn")
     .addEventListener("click", toggleNewPlayerForm);
-};
 
+  newPlayerForm.addEventListener("submit", addNewPlayer);
+};
+//#endregion
+
+//#region Data Management and Display
 function loadPlayers() {
   const storedPlayers = localStorage.getItem("players");
   if (storedPlayers) {
@@ -138,4 +143,40 @@ function toggleNewPlayerForm() {
   newPlayerForm.style.display == "none"
     ? (newPlayerForm.style.display = "flex")
     : (newPlayerForm.style.display = "none");
+}
+//#endregion
+
+//#region Add New Player
+function addNewPlayer(event) {
+  event.preventDefault();
+
+  let name = document.getElementById("nameInput").value;
+  let position = document.getElementById("positionInput").value;
+  let team = document.getElementById("teamInput").value;
+  let photo = document.getElementById("photoInput").value;
+  let goals = document.getElementById("goalsInput").value;
+  let assists = document.getElementById("assistsInput").value;
+  let matches = document.getElementById("matchesInput").value;
+
+  // Adiciona o novo jogador ao array
+  players.push({
+    nome: name,
+    posicao: position,
+    clube: team,
+    foto: photo,
+    gols: goals,
+    assistencias: assists,
+    jogos: matches,
+    favorita: false,
+  });
+
+  // Salva as alterações e atualiza a exibição
+  savePlayers();
+  displayPlayers();
+
+  // Limpa o formulário
+  newPlayerForm.reset();
+  toggleNewPlayerForm();
+
+  window.alert("Jogador adicionado com sucesso!");
 }
