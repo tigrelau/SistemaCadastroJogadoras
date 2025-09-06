@@ -68,7 +68,20 @@ window.onload = function () {
     .addEventListener("click", toggleNewPlayerForm);
 
   newPlayerForm.addEventListener("submit", addNewPlayer);
+  playersGrid.addEventListener("click", handlePlayerGridClick);
 };
+
+function handlePlayerGridClick(event) {
+  const clickedElement = event.target.closest("button");
+  if (!clickedElement) return;
+
+  const action = clickedElement.dataset.action;
+  const index = clickedElement.dataset.index;
+
+  if (action === "delete") {
+    deletePlayer(index);
+  }
+}
 //#endregion
 
 //#region Data Management and Display
@@ -91,21 +104,21 @@ function displayPlayers() {
   players.forEach((player, index) => {
     const playerCard = document.createElement("div");
     playerCard.className = "player-card";
-    playerCard.innerHTML = createPlayerCard(player);
+    playerCard.innerHTML = createPlayerCard(player, index);
     playersGrid.appendChild(playerCard);
   });
 }
 
-function createPlayerCard(player) {
+function createPlayerCard(player, index) {
   return `<div class="card-header">
             <button class="favorite-btn ${player.favorita ? "active" : ""}">
               <i class="fas fa-heart"></i>
             </button>
             <div class="card-actions">
-              <button class="action-btn edit-btn">
+              <button class="action-btn edit-btn" data-action="edit" data-index="${index}">
                 <i class="fas fa-edit"></i>
               </button>
-              <button class="action-btn delete-btn">
+              <button class="action-btn delete-btn" data-action="delete" data-index="${index}">
                 <i class="fas fa-trash"></i>
               </button>
             </div>
@@ -146,7 +159,7 @@ function toggleNewPlayerForm() {
 }
 //#endregion
 
-//#region Add New Player
+//#region CRUD Operations
 function addNewPlayer(event) {
   event.preventDefault();
 
@@ -178,5 +191,12 @@ function addNewPlayer(event) {
   newPlayerForm.reset();
   toggleNewPlayerForm();
 
-  window.alert("Jogador adicionado com sucesso!");
+  window.alert("Jogadora adicionada com sucesso!");
+}
+
+function deletePlayer(index) {
+  players.splice(index, 1);
+  savePlayers();
+  displayPlayers();
+  window.alert("Jogadora deletada com sucesso!");
 }
