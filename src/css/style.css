@@ -137,7 +137,7 @@ body {
   gap: 1rem;
   margin-top: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(194, 89, 104, 0.2);
+  border-bottom: 1px solid rgba(194, 89, 163, 0.2);
 }
 
 .search-bar {
@@ -147,7 +147,7 @@ body {
 
 #searchInput {
   padding: 0.75rem;
-  border: 1px solid rgba(194, 89, 104, 0.2);
+  border: 1px solid rgb(189, 61, 136);
   border-radius: 0.5rem;
   font-size: 0.9rem;
   width: 250px;
@@ -155,7 +155,7 @@ body {
 
 #searchBtn {
   padding: 0.75rem 1rem;
-  background-color: var(--roxo);
+  background-color:#dda8b7;
   color: white;
   border-radius: 0.5rem;
   border: none;
@@ -164,7 +164,7 @@ body {
 }
 
 #searchBtn:hover {
-  background-color: #6a3e9c;
+  background-color: #a15478;
 }
 
 .filters {
@@ -174,15 +174,15 @@ body {
 
 .filter-select {
   padding: 0.75rem;
-  border: 1px solid rgba(194, 89, 104, 0.2);
+  border: 1px solid rgb(189, 61, 136);
   border-radius: 0.5rem;
   font-size: 0.9rem;
   color: var(--preto);
 }
 
 .btn-clear {
-  background: #f5f5f5;
-  color: #666;
+  background: #dda8b7;
+  color: #fdfdfd;
   border: none;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
