@@ -161,10 +161,12 @@ body {
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 #searchBtn:hover {
   background-color: #a15478;
+  transform: scale(1.10);
 }
 
 .filters {
@@ -181,6 +183,7 @@ body {
   background-color: #dda8b7;
 }
 
+
 .btn-clear {
   background: #dda8b7;
   color: #fdfdfd;
@@ -190,10 +193,12 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .btn-clear:hover {
-  background: #a3537f;
+  background: #a15478;
+  transform: scale(1.10);
 }
 
 /* Grid de Cards */
