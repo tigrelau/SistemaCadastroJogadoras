@@ -51,7 +51,30 @@
     </header>
 
     <main class="container">
-      <!-- Grid de Jogadoras -->
+      <div class="filter-container">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Pesquisar jogadora..." />
+          <button id="searchBtn" class="action-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div class="filters">
+          <select id="teamFilter" class="filter-select">
+            <option value="">Todos os Times</option>
+          </select>
+          <select id="sortSelect" class="filter-select">
+            <option value="">Ordenar Por</option>
+            <option value="name-asc">Nome (A-Z)</option>
+            <option value="name-desc">Nome (Z-A)</option>
+            <option value="goals-desc">Gols (Maior)</option>
+            <option value="goals-asc">Gols (Menor)</option>
+          </select>
+        </div>
+        <button id="clearFiltersBtn" class="btn-clear">
+          Limpar Filtros
+        </button>
+      </div>
+      
       <div class="players-grid" id="playersGrid">
         <!-- Card 1 -->
         <div class="player-card">
@@ -98,7 +121,7 @@
         </div>
       </div>
     </main>
-    <!--Formulário -->
+    <!-- Formulário -->
     <form class="novo-cadastro" id="newPlayerForm" style="display: none">
       <div class="cadastro-content">
         <div class="cadastro-header">
