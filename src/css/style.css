@@ -177,7 +177,8 @@ body {
   border: 1px solid rgb(189, 61, 136);
   border-radius: 0.5rem;
   font-size: 0.9rem;
-  color: var(--preto);
+  color: white;
+  background-color: #dda8b7;
 }
 
 .btn-clear {
@@ -192,7 +193,7 @@ body {
 }
 
 .btn-clear:hover {
-  background: #e5e5e5;
+  background: #a3537f;
 }
 
 /* Grid de Cards */
