@@ -1,6 +1,6 @@
-# ⚽ Checkpoint 4: Gerenciamento de Jogadoras do Futebol Feminino
+# ⚽ Gerenciamento de Jogadoras
 
-Este projeto é uma aplicação web desenvolvida para a disciplina de WebDev, com o objetivo de gerenciar informações de jogadoras de futebol feminino. A aplicação permite realizar operações de **CRUD** (Create, Read, Update, Delete) de forma interativa, além de oferecer funcionalidades de busca, filtro e ordenação.
+Este projeto é uma aplicação web desenvolvida com o objetivo de gerenciar informações de jogadoras de futebol feminino. A aplicação permite realizar operações de **CRUD** (Create, Read, Update, Delete) de forma interativa, além de oferecer funcionalidades de busca, filtro e ordenação.
 
 ## Funcionalidades Principais
 
