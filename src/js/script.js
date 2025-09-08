@@ -51,6 +51,8 @@ let players = [
   },
 ];
 
+let filteredPlayers = [...players];
+
 let teams = [];
 let favoriteCount = 0;
 
@@ -70,9 +72,27 @@ window.onload = function () {
     .querySelector("#closeFormBtn")
     .addEventListener("click", toggleNewPlayerForm);
 
+  document
+    .querySelector("#searchBtn")
+    .addEventListener("click", displayPlayers);
+
+  document
+    .querySelector("#clearFiltersBtn")
+    .addEventListener("click", handleClearFiltersClick);
+
+  document
+    .querySelector("#sortSelect")
+    .addEventListener("change", displayPlayers);
+
   newPlayerForm.addEventListener("submit", SavePlayer);
   playersGrid.addEventListener("click", handlePlayerGridClick);
 };
+
+function handleClearFiltersClick() {
+  document.querySelector("#searchInput").value = "";
+  document.querySelector("#teamFilter").value = "Todos";
+  displayPlayers();
+}
 
 function handleAddNewPlayerClick() {
   document.getElementById("formTitle").innerText = "Cadastrar Nova Jogadora";
@@ -97,6 +117,24 @@ function handlePlayerGridClick(event) {
     toggleFavorite(index);
   }
 }
+
+function handleEditPlayerClick(index) {
+  let player = players[index];
+
+  document.getElementById("nameInput").value = player.nome;
+  document.getElementById("positionInput").value = player.posicao;
+  document.getElementById("teamInput").value = player.clube;
+  document.getElementById("photoInput").value = player.foto;
+  document.getElementById("goalsInput").value = player.gols;
+  document.getElementById("assistsInput").value = player.assistencias;
+  document.getElementById("matchesInput").value = player.jogos;
+
+  document.getElementById("formTitle").innerText = "Editar Jogadora";
+  document.getElementById("savePlayerBtn").innerText = "Salvar Alterações";
+  document.getElementById("savePlayerBtn").dataset.index = index;
+
+  toggleNewPlayerForm();
+}
 //#endregion
 
 //#region Data Management and Display
@@ -104,6 +142,8 @@ function loadPlayers() {
   const storedPlayers = localStorage.getItem("players");
   if (storedPlayers) {
     players = JSON.parse(storedPlayers);
+    filteredPlayers = [...players];
+    sortPlayers();
   } else {
     savePlayers();
   }
@@ -111,24 +151,37 @@ function loadPlayers() {
 
 function savePlayers() {
   localStorage.setItem("players", JSON.stringify(players));
+  filteredPlayers = [...players];
 }
 
 function displayPlayers() {
   playersGrid.innerHTML = "";
   favoriteCount = 0;
+  teams = [];
 
-  players.forEach((player, index) => {
+  filterPlayers();
+  sortPlayers();
+
+  filteredPlayers.forEach((player, index) => {
+    const realIndex = players.indexOf(player);
     if (player.favorita) favoriteCount++;
 
     teams.includes(player.clube) ? null : teams.push(player.clube);
 
     const playerCard = document.createElement("div");
     playerCard.className = "player-card";
-    playerCard.innerHTML = createPlayerCard(player, index);
+    playerCard.innerHTML = createPlayerCard(player, realIndex);
     playersGrid.appendChild(playerCard);
   });
 
-  document.querySelector("#totalPlayers").innerText = players.length;
+  teams.forEach((team) => {
+    const option = document.createElement("option");
+    option.value = team;
+    option.innerText = team;
+    document.querySelector("#teamFilter").append(option);
+  });
+
+  document.querySelector("#totalPlayers").innerText = filteredPlayers.length;
   document.querySelector("#totalTeams").innerText = teams.length;
   document.querySelector("#favoriteCount").innerText = favoriteCount;
 }
@@ -184,22 +237,66 @@ function toggleNewPlayerForm() {
     : (newPlayerForm.style.display = "none");
 }
 
-function handleEditPlayerClick(index) {
-  let player = players[index];
+function filterPlayers() {
+  const searchFilter = document
+    .querySelector("#searchInput")
+    .value.toLowerCase();
 
-  document.getElementById("nameInput").value = player.nome;
-  document.getElementById("positionInput").value = player.posicao;
-  document.getElementById("teamInput").value = player.clube;
-  document.getElementById("photoInput").value = player.foto;
-  document.getElementById("goalsInput").value = player.gols;
-  document.getElementById("assistsInput").value = player.assistencias;
-  document.getElementById("matchesInput").value = player.jogos;
+  const teamFilter = document.querySelector("#teamFilter").value;
 
-  document.getElementById("formTitle").innerText = "Editar Jogadora";
-  document.getElementById("savePlayerBtn").innerText = "Salvar Alterações";
-  document.getElementById("savePlayerBtn").dataset.index = index;
+  filteredPlayers = [...players];
 
-  toggleNewPlayerForm();
+  if (searchFilter != "") {
+    filteredPlayers = filteredPlayers.filter((player) => {
+      return (
+        player.nome.toLowerCase().includes(searchFilter) ||
+        player.posicao.toLowerCase().includes(searchFilter)
+      );
+    });
+  }
+
+  if (teamFilter != "Todos") {
+    filteredPlayers = filteredPlayers.filter((player) => {
+      return player.clube == teamFilter;
+    });
+    console.log("filtro2:", filteredPlayers);
+  }
+}
+
+function sortPlayers() {
+  const sort = document.querySelector("#sortSelect").value;
+
+  switch (sort) {
+    case "favoritas":
+      filteredPlayers.sort((a, b) =>
+        a.favorita === b.favorita ? 0 : a.favorita ? -1 : 1
+      );
+      break;
+    case "name-asc":
+      filteredPlayers.sort((a, b) =>
+        a.nome === b.nome ? 0 : a.nome < b.nome ? -1 : 1
+      );
+      break;
+    case "name-desc":
+      filteredPlayers.sort((a, b) =>
+        a.nome === b.nome ? 0 : a.nome > b.nome ? -1 : 1
+      );
+      break;
+    case "position-asc":
+      filteredPlayers.sort((a, b) =>
+        a.posicao === b.posicao ? 0 : a.posicao < b.posicao ? -1 : 1
+      );
+      break;
+    case "position-desc":
+      filteredPlayers.sort((a, b) =>
+        a.posicao === b.posicao ? 0 : a.posicao > b.posicao ? -1 : 1
+      );
+      break;
+    default:
+      break;
+  }
+
+  console.log("sorted:", filteredPlayers);
 }
 //#endregion
 
@@ -257,3 +354,4 @@ function toggleFavorite(index) {
   savePlayers();
   displayPlayers();
 }
+//#endregion
