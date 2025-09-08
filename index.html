@@ -51,7 +51,30 @@
     </header>
 
     <main class="container">
-      <!-- Grid de Jogadoras -->
+      <div class="filter-container">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Pesquisar..." />
+        </div>
+        <div class="filters">
+          <select id="teamFilter" class="filter-select">
+            <option value="Todos">Todos os Times</option>
+          </select>
+          <select id="sortSelect" class="filter-select">
+            <option value="favoritas">Favoritas</option>
+            <option value="name-asc">Nome (A-Z)</option>
+            <option value="name-desc">Nome (Z-A)</option>
+            <option value="position-asc">Posição (A-Z)</option>
+            <option value="position-desc">Posição (Z-A)</option>
+          </select>
+        </div>
+        <div class="filters-buttons">
+          <button id="searchBtn" class="action-btn">
+            <i class="fas fa-search"></i>
+          </button>
+          <button id="clearFiltersBtn" class="btn-clear">Limpar Filtros</button>
+        </div>
+      </div>
+
       <div class="players-grid" id="playersGrid">
         <!-- Card 1 -->
         <div class="player-card">
@@ -98,7 +121,7 @@
         </div>
       </div>
     </main>
-    <!--Formulário -->
+    <!-- Formulário -->
     <form class="novo-cadastro" id="newPlayerForm" style="display: none">
       <div class="cadastro-content">
         <div class="cadastro-header">
@@ -125,16 +148,16 @@
               <label class="form-label">Posição</label>
               <select class="form-input" required id="positionInput">
                 <option value="">Selecione uma posição</option>
-                <option value="goleira">Goleira</option>
-                <option value="zagueira">Zagueira</option>
-                <option value="lateral-direita">Lateral Direita</option>
-                <option value="lateral-esquerda">Lateral Esquerda</option>
-                <option value="volante">Volante</option>
-                <option value="meio-campo">Meio Campo</option>
-                <option value="meia-atacante">Meia Atacante</option>
-                <option value="ponta-direita">Ponta Direita</option>
-                <option value="ponta-esquerda">Ponta Esquerda</option>
-                <option value="centroavante">Centroavante</option>
+                <option value="Goleira">Goleira</option>
+                <option value="Zagueira">Zagueira</option>
+                <option value="Lateral-direita">Lateral Direita</option>
+                <option value="Lateral-esquerda">Lateral Esquerda</option>
+                <option value="Volante">Volante</option>
+                <option value="Meio-campo">Meio Campo</option>
+                <option value="Meia-atacante">Meia Atacante</option>
+                <option value="Ponta-direita">Ponta Direita</option>
+                <option value="Ponta-esquerda">Ponta Esquerda</option>
+                <option value="Centroavante">Centroavante</option>
               </select>
             </div>
 
