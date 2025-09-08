@@ -29,7 +29,7 @@ A base de dados inicial das jogadoras é armazenada em um arquivo **JSON**. Na p
 
 Você pode acessar a versão hospedada do projeto no GitHub Pages através do link abaixo:
 
-**Link do GitHub Pages:** `[https://tigrelau.github.io/SistemaCadastroJogadoras/]`
+**Link do GitHub Pages:** `[https://tigrelau.github.io/SistemaCadastroJogadoras/](https://tigrelau.github.io/SistemaCadastroJogadoras/)`
 
 ## Participantes
 
