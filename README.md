@@ -25,20 +25,6 @@ A aplicação foi construída com as seguintes tecnologias:
 
 A base de dados inicial das jogadoras é armazenada em um arquivo **JSON**. Na primeira execução da aplicação, esses dados são salvos no **LocalStorage** do navegador, garantindo que as alterações feitas pelo usuário sejam persistidas.
 
-## Estrutura do Projeto
-
-A seguir, a estrutura de pastas e arquivos do projeto para fácil navegação.
-
-.
-├── src/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── script.js
-├── index.html
-├── license.md
-└── README.md
-
 ## Acesso ao Projeto
 
 Você pode acessar a versão hospedada do projeto no GitHub Pages através do link abaixo:
