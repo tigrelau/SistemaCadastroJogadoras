@@ -31,10 +31,10 @@ A seguir, a estrutura de pastas e arquivos do projeto para fácil navegação.
 
 .
 ├── src/
-│ ├── css/
-│ │ └── style.css
-│ └── js/
-│ └── script.js
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
 ├── index.html
 ├── license.md
 └── README.md
