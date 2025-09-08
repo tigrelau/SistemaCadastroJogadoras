@@ -53,10 +53,7 @@
     <main class="container">
       <div class="filter-container">
         <div class="search-bar">
-          <input type="text" id="searchInput" placeholder="Pesquisar jogadora..." />
-          <button id="searchBtn" class="action-btn">
-            <i class="fas fa-search"></i>
-          </button>
+          <input type="text" id="searchInput" placeholder="Pesquisar..." />
         </div>
         <div class="filters">
           <select id="teamFilter" class="filter-select">
@@ -71,11 +68,14 @@
             <option value="goals-asc">Gols (Menor)</option>
           </select>
         </div>
-        <button id="clearFiltersBtn" class="btn-clear">
-          Limpar Filtros
-        </button>
+        <div class="filters-buttons">
+          <button id="searchBtn" class="action-btn">
+            <i class="fas fa-search"></i>
+          </button>
+          <button id="clearFiltersBtn" class="btn-clear">Limpar Filtros</button>
+        </div>
       </div>
-      
+
       <div class="players-grid" id="playersGrid">
         <!-- Card 1 -->
         <div class="player-card">
